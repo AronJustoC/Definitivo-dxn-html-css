@@ -154,6 +154,7 @@ img {
   font-family: var(--second-font);
   font-weight: var(--font-semi-bold);
   transition: color 0.4s;
+  text-align: center;
 }
 
 .nav__logo:hover {
@@ -230,9 +231,10 @@ img {
 
 .home__title {
   color: var(--white-color);
-  font-size: var(--biggest-font-size);
+  font-size: var(--big-font-size);
   font-weight: var(--font-semi-bold);
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .home__images {
@@ -331,7 +333,9 @@ img {
   color: var(--white-color);
   padding: 1rem 2rem;
   font-weight: var(--font-semi-bold);
-  transition: background 0.4s, box-shadow 0.4s;
+  transition:
+    background 0.4s,
+    box-shadow 0.4s;
 }
 
 .button:hover {
@@ -765,7 +769,9 @@ img {
   padding: 6px;
   font-size: 1.25rem;
   z-index: var(--z-tooltip);
-  transition: bottom 0.4s, transform 0.4s;
+  transition:
+    bottom 0.4s,
+    transform 0.4s;
 }
 
 .scrollup:hover {
