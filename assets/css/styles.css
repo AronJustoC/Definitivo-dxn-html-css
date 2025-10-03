@@ -153,7 +153,7 @@ img {
   color: var(--white-color);
   font-family: var(--second-font);
   font-weight: var(--font-semi-bold);
-  transition: color 0.4s;
+  transition: color 0.2s;
   text-align: center;
 }
 
@@ -179,7 +179,7 @@ img {
     width: 100%;
     padding-block: 4rem;
     box-shadow: 0 8px 16px hsla(166, 85%, 8%, 0.3);
-    transition: top 0.4s;
+    transition: top 0.2s;
   }
 }
 
@@ -225,8 +225,12 @@ img {
 /*=============== HOME ===============*/
 .home__container {
   position: relative;
-  padding-top: 3rem;
+  grid-template-columns: 1000px;
+  max-width: 1000px;
+  padding-top: 2.5rem;
+  justify-content: center;
   row-gap: 0;
+  overflow: visible;
 }
 
 .home__title {
@@ -240,16 +244,19 @@ img {
 .home__images {
   position: relative;
   display: grid;
-  justify-items: center;
+  place-items: center;
   justify-self: center;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  height: 280px; /* Altura fija para mantener espacio */
 }
 
 .home__shape {
-  width: 280px;
+  width: 100%;
   height: 280px;
   background-color: var(--first-color);
-  border-radius: 50%;
-  clip-path: inset(50% 0 0 0);
+  opacity: 0.3;
+  border-radius: 100%;
+  clip-path: ellipse(60% 25% at 50% 50%);
 }
 
 .home__images img {
@@ -257,22 +264,38 @@ img {
 }
 
 .home__coffee {
-  width: 160px;
-  top: -3.5rem;
-  rotate: 10deg;
+  max-width: 800px;
+  width: 100%;
+  top: -1rem; /* Ajuste de posición vertical */
+  position: absolute;
+  z-index: 1; /* Asegura que esté por encima del shape */
+  transform: translateX(-50%); /* Centra horizontalmente */
+  left: 50%; /* Centra horizontalmente */
 }
 
-.home__splash {
-  max-width: initial;
-  width: 350px;
-  rotate: 10deg;
-  left: -3rem;
-  bottom: 0.5rem;
+/* Ajuste para dispositivos pequeños */
+@media screen and (max-width: 330px) {
+  /* Ajustar el contenedor para la imagen más grande */
+  .home__shape {
+    height: 300px; /* Aumentado de 250px */
+  }
+
+  .home__coffee {
+    top: -2rem; /* Ajustado para mejor posición */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Ajustar contenedor principal para evitar desbordamiento */
+  .home__images {
+    height: 320px; /* Aumentado para acomodar la imagen más grande */
+    overflow: visible;
+  }
 }
 
 .home__bean-1,
 .home__bean-2 {
-  width: 40px;
+  width: 70px;
 }
 
 .home__bean-1 {
@@ -288,35 +311,40 @@ img {
 }
 
 .home__ice-1 {
-  width: 50px;
+  width: 100px;
   left: 1.5rem;
   bottom: 3rem;
+  rotate: 15deg;
 }
 
 .home__ice-2 {
-  width: 40px;
-  top: 4rem;
+  width: 100px;
+  top: 10rem;
   right: 1.25rem;
   rotate: 60deg;
 }
 
 .home__leaf {
-  width: 50px;
-  right: 6rem;
-  bottom: -1rem;
+  width: 100px;
+  right: 1rem;
+  bottom: 3rem;
   rotate: -15deg;
 }
 
 .home__sticker {
   position: absolute;
-  width: 50px;
+  width: 70px;
   right: 0.5rem;
-  top: 29rem;
+  top: 22rem;
   rotate: 15deg;
+  z-index: 1;
 }
 
 .home__data {
-  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.home__text-wrapper {
   text-align: center;
 }
 
@@ -398,7 +426,7 @@ img {
   width: 30px;
   top: 3rem;
   left: 0.5rem;
-  transition: transform 0.5s 0.1s;
+  transition: transform 0.3s 0.1s;
 }
 
 .popular__bean-2 {
@@ -407,7 +435,7 @@ img {
   bottom: 2rem;
   rotate: 75deg;
   filter: blur(1px);
-  transition: transform 0.5s 0.1s;
+  transition: transform 0.3s 0.1s;
 }
 
 .popular__data {
@@ -534,14 +562,14 @@ img {
 .products__coffee {
   width: 80px;
   top: 0;
-  transition: transform 0.4s;
+  transition: transform 0.2s;
 }
 
 .products__ice-1 {
   width: 30px;
   left: 0.5rem;
   bottom: 0;
-  transition: transform 0.5s 0.1s;
+  transition: transform 0.3s 0.1s;
 }
 
 .products__ice-2 {
@@ -549,7 +577,7 @@ img {
   top: 3.2rem;
   right: 0.75rem;
   rotate: 60deg;
-  transition: transform 0.5s 0.1s;
+  transition: transform 0.3s 0.1s;
 }
 
 .products__data {
@@ -625,7 +653,7 @@ img {
 .contact__social-link {
   font-size: 1.5rem;
   color: var(--first-color);
-  transition: transform 0.4s;
+  transition: transform 0.2s;
 }
 
 .contact__social-link:hover {
@@ -701,7 +729,7 @@ img {
 .footer__social-link {
   font-size: 1.5rem;
   color: var(--dark-color);
-  transition: transform 0.4s;
+  transition: transform 0.2s;
 }
 
 .footer__social-link:hover {
@@ -770,8 +798,8 @@ img {
   font-size: 1.25rem;
   z-index: var(--z-tooltip);
   transition:
-    bottom 0.4s,
-    transform 0.4s;
+    bottom 0.2s,
+    transform 0.2s;
 }
 
 .scrollup:hover {
@@ -785,34 +813,44 @@ img {
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 575px) {
+  .home__container {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 330px) {
   .container {
+    display: flex;
     margin-inline: 1rem;
+    text-align: center;
+    justify-content: center;
   }
 
   .section__title {
     font-size: 2rem;
   }
 
-  .home__title {
-    font-size: 3.5rem;
-  }
-
+  /* Ajustar el contenedor para la imagen más grande */
   .home__shape {
-    width: 250px;
-    height: 250px;
+    height: 300px; /* Aumentado de 250px */
   }
 
   .home__coffee {
-    width: 145px;
+    top: -2rem; /* Ajustado para mejor posición */
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .home__splash {
-    width: 310px;
+  /* Ajustar contenedor principal para evitar desbordamiento */
+  .home__images {
+    height: 320px; /* Aumentado para acomodar la imagen más grande */
+    overflow: visible;
   }
 
   .home__sticker {
     top: 25rem;
+    right: 10rem;
   }
 
   .about__shape {
@@ -899,7 +937,7 @@ img {
   }
 
   .section {
-    padding-block: 7rem 5rem;
+    padding-block: 7rem 1rem;
   }
 
   .section__title {
@@ -925,9 +963,13 @@ img {
   }
 
   .home__container {
-    grid-template-columns: 970px;
-    max-width: 970px;
+    grid-template-columns: 1000px;
+    max-width: 1000px;
     padding-top: 2.5rem;
+    justify-content: center;
+    row-gap: 0;
+    overflow: visible;
+    height: 100vh;
   }
 
   .home__images {
@@ -935,52 +977,52 @@ img {
   }
 
   .home__shape {
-    width: 490px;
-    height: 490px;
+    width: 1000px;
+    height: 500px;
   }
 
   .home__coffee {
-    width: 280px;
-    top: -6rem;
-  }
-
-  .home__splash {
-    width: 615px;
-    left: -5rem;
-    bottom: 0.75rem;
+    width: 900px;
+    top: -3rem;
   }
 
   .home__bean-1,
   .home__bean-2 {
-    width: 70px;
+    width: 200px;
+    z-index: 1;
   }
 
   .home__bean-1 {
-    left: 3rem;
-    top: 3.5rem;
+    left: 5rem;
+    top: -5rem;
+    rotate: -15deg;
   }
 
   .home__bean-2 {
-    bottom: 10.7rem;
-    right: 6.5rem;
+    bottom: 10rem;
+    right: 20.5rem;
+    z-index: 1;
   }
 
   .home__ice-1 {
-    width: 90px;
-    left: 2.5rem;
-    bottom: 5rem;
+    width: 200px;
+    left: 6rem;
+    bottom: -5rem;
+    z-index: 1;
   }
 
   .home__ice-2 {
-    width: 70px;
-    top: 6.5rem;
-    right: 2rem;
+    width: 200px;
+    top: -2rem;
+    right: 1rem;
+    z-index: 1;
   }
 
   .home__leaf {
-    width: 90px;
+    width: 200px;
     right: 10rem;
-    bottom: -2.5rem;
+    bottom: -8.5rem;
+    z-index: 1;
   }
 
   .home__data {
@@ -993,9 +1035,9 @@ img {
   }
 
   .home__description {
-    margin-bottom: 6rem;
+    margin-top: -1rem;
+    font-size: var(--h3-font-size);
   }
-
   .home__sticker {
     width: 150px;
     top: 23rem;
